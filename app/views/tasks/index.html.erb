@@ -1,9 +1,29 @@
 <h1>My tasks</h1>
 
-<ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task_path(task) %></li>
+    <div class="alert alert-dark" role="alert">
+      <div class="complete">
+        <% if task.completed %>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+            <label class="form-check-label" for="defaultCheck2">
+              <%= link_to task.title, task_path(task) %>
+            </label>
+          </div>
+        <% else%>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" disabled>
+            <label class="form-check-label" for="defaultCheck1">
+              <%= link_to task.title, task_path(task) %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <%end%>
-</ul>
 
-<%= link_to "Add a task", tasks_new_path(@task) %>
+<div class="text-center">
+  <div class='btn btn-success '>
+    <%= link_to "Add a task", tasks_new_path(@task) %>
+  </div>
+</div>
